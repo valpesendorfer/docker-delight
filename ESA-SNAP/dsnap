@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## put into /usr/bin to launch docker SNAP from PATH
+
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+
+xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+docker run -d --net=host --name="SNAP" --rm -v /home/$USER:/home/$USER -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH esa-snap /launchers/launch_snap

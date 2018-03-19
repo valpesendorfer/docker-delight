@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+USER_ID=`ls -lahn /home | tail -1 | awk {'print $3'}`
+GROUP_ID=`ls -lahn /home | tail -1 | awk {'print $4'}`
+USER_NAME=`ls -lah /home/ | tail -1 | awk '{print $9}'`
+
+
+useradd --shell /bin/bash --uid $USER_ID --gid $GROUP_ID $USER_NAME
+export HOME=/home/$USER_NAME
+
+su $USER_NAME -c "snap"

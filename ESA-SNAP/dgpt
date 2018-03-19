@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+## put into /usr/bin to launch docker gpt from PATH
+
+docker run -it --net=host --name="gpt" --rm -v /home/$USER:/home/$USER esa-snap /launchers/launch_gpt $@
