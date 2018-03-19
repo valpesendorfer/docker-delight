@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+## put into /usr/bin to call docker otb with "dotb 'otbcli_*'"
+
+docker run -it --name="otb" --rm -v /mnt/store:/store -v /home/$USER:/home/$USER otb $@

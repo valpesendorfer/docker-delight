@@ -1,0 +1,13 @@
+FROM python:2.7.14-jessie
+
+RUN apt-get update && apt-get install -y nano git
+
+ADD https://www.orfeo-toolbox.org/packages/OTB-6.4.0-Linux64.run /otb/otb.run
+
+RUN bash /otb/otb.run
+
+RUN rm -rf /otb
+
+ENV PATH $PATH:/OTB-6.4.0-Linux64/bin/
+
+CMD /bin/bash
